@@ -4,12 +4,12 @@ const port = process.env.PORT || 3008;
 
 app.get("/", (req, res) => {
   res.set("Cache-Control", "public, max-age=31557600, s-maxage=31557600");
-  res.type("html").send(html);
+  res.type("html").send(html(new Date().toISOString()));
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-const html = `
+const html = (reqestedAt: string) => `
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,6 +56,9 @@ const html = `
     <section>
       Hello from Render!
     </section>
+    <div>
+      Requested at ${reqestedAt}
+    </div>
   </body>
 </html>
 `;
