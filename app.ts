@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3008;
 
 app.get("/", (req, res) => {
-  res.set("Cache-Control", "public, max-age=31557600");
+  res.set("Cache-Control", "public, max-age=3600");
   res.type("html").send(html(new Date().toISOString()));
 });
 
