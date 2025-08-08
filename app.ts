@@ -2,6 +2,12 @@ import express from "express";
 const app = express();
 const port = process.env.PORT || 3008;
 
+app.use(
+  express.static("public", {
+    maxAge: 3600000,
+  })
+);
+
 app.get("/", (req, res) => {
   res.set("Cache-Control", "public, max-age=3600");
   res.type("html").send(html(new Date().toISOString()));
@@ -50,11 +56,16 @@ const html = (reqestedAt: string) => `
         margin-right: -50%;
         transform: translate(-50%, -50%);
       }
+      img {
+        height: 200px;
+
+      }
     </style>
   </head>
   <body>
     <section>
       Hello from Render!
+      <img src="/rendy-hello.png"/>
     </section>
     <div>
       Requested at ${reqestedAt}
