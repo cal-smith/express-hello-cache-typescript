@@ -1,0 +1,22 @@
+<div class="container mx-auto px-4 py-8">
+  <header class="text-center mb-12 p-8">
+    <h1 class="text-4xl md:text-6xl font-black text-gray-700 dark:text-gray-50 mb-4 transform rotate-1">Hello From
+      Render!</h1>
+  </header>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8"
+  >
+    {{#each images}}
+    <div
+      class="border-1 p-4 border-gray-100 dark:border-gray-600 h-80"
+    >
+      <img
+        src="{{this}}"
+        alt="Image"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    {{/each}}
+  </div>
+</div>
